@@ -64,6 +64,8 @@ def xml2text(xml):
             text += '\t'
         elif child.tag in (qn('w:br'), qn('w:cr')):
             text += '\n'
+        elif child.tag == qn("w:numPr"):
+            text += '1.'  # TODO: numId and Increment
         elif child.tag == qn("w:p"):
             text += '\n\n'
     return text
@@ -108,6 +110,6 @@ def process(docx, img_dir=None):
 
 
 if __name__ == '__main__':
-    args = process_args()
-    text = process(args.docx, args.img_dir)
+    # args =
+    text = process(u'/Users/zhaohenry/ccp_file/112.docx')
     sys.stdout.write(text.encode('utf-8'))
